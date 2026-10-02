@@ -5,7 +5,7 @@
 ### Ссылки
 * GitHub организации: https://github.com/SoftDevbyRVCHK
 * Дизайн и макеты в Figma: [ВСТАВИТЬ ССЫЛКУ НА FIGMA] (старые наброски оставлены в стороне от основного фрейма)
-* Доска задач (GitHub Projects): [ВСТАВИТЬ ССЫЛКУ НА ДОСКУ]
+* Доска задач (GitHub Projects): [https://github.com/orgs/SoftDevbyRVCHK/projects/1]
 
 ### Навигация по документации
 * [Схема базы данных (ERD)](./ERD.md)
