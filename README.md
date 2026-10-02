@@ -4,7 +4,7 @@
 
 🔗 **Ссылки на ресурсы проекта:**
 * **Организация на GitHub:** [SoftDevbyRVCHK](https://github.com/SoftDevbyRVCHK)
-* **Kanban-доска (GitHub Projects):** `[https://github.com/SoftDevbyRVCHK/backend/tree/develop]`
+* **Kanban-доска (GitHub Projects):** `[https://github.com/orgs/SoftDevbyRVCHK/projects/1]`
 
 ---
 
