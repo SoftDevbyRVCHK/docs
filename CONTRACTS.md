@@ -22,3 +22,57 @@
 {
   "type": "New"
 }
+```
+**2. Обновление:**
+```
+{
+  "type": "Update",
+  "id_client": 1,
+  "data": {
+    "active_modules": []
+  }
+}
+```
+**3. Ответ при заходе на сервер:**
+```
+{
+  "type": "coords",
+  "data": {
+    "time": 0,
+    "planets": {
+      "image1.png": {
+        "a": 100,
+        "e": 0.5,
+        "t": 0.00,
+        "mass": 10,
+        "speed": 0.12,
+        "planet_type": "shop"
+      }
+    },
+    "ships": [
+      {
+        "ship_type": "Sokol",
+        "x": 0,
+        "y": 0,
+        "angle": 0,
+        "vx": 0,
+        "vy": 0,
+        "va": 0,
+        "modules": []
+      }
+    ],
+    "self": {
+      "x": 0,
+        "y": 0,
+        "angle": 0,
+        "vx": 0,
+        "va": 0,
+        "energy": 100,
+        "fuel": 500,
+        "parts": [[0, 0], [0, 0], [50, 0], [0, 0], [0, 0]],
+        "money": 500,
+        "buffs": []
+    }
+  }
+}
+```
