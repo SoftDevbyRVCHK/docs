@@ -1,0 +1,14 @@
+{
+  "type": "Coords",
+
+  "data": {
+    "planets": [
+      {"image": "pluto.png", "x":  100, "y":  1e+2, "vx": 0.5, "vy": 1e-7, "r": 50},
+      {"image": "earth.png", "x":  300, "y":  1e+2, "vx": 0.05, "vy": 1e-3, "r": 80}
+    ],
+    "ships": [
+      {"image": "kolymaga2.png", "x":  0, "y": 0, "angle":  0, "vx" : 0, "vy":  0, "w" : 0}
+    ],
+    "self_index": 5
+  }
+}
