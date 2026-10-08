@@ -2,80 +2,97 @@
 
 Все сообщения между клиентом и сервером передаются по WebSockets в формате JSON.
 
-
 ### Запросы Client -> Server
 
 **1. Появление на сервере:**
 ```json
 {
-  "type": "New"
+  "type": "New",
+  "data": {}
 }
+
 ```
+
 **2. Обновление:**
+
 ```json
 {
   "type": "Update",
-  "id_client": 1,
   "data": {
-    "active_modules": []
+    "active_modules": [],
+    "used_modules": []
   }
 }
+
 ```
-### Ответы Server -> Client
-**1. Ответ при заходе на сервер:**
+
+**3. Выход / Удаление:**
+
 ```json
 {
-  "type": "coords",
+  "type": "delete",
+  "data": {}
+}
+
+```
+
+**4. Запрос ресурса (изображения):**
+
+```json
+{
+  "type": "Load",
   "data": {
-    "time": 0,
-    "planets": {
-      "image1.png": {
-        "a": 100,
-        "e": 0.5,
-        "t": 0.00,
-        "mass": 10,
-        "speed": 0.12,
-        "planet_type": "shop"
-      }
-    },
-    "ships": [
-      {
-        "ship_type": "Sokol",
-        "x": 0,
-        "y": 0,
-        "angle": 0,
-        "vx": 0,
-        "vy": 0,
-        "va": 0,
-        "modules": []
-      }
-    ],
-    "self": {
-      "x": 0,
-        "y": 0,
-        "angle": 0,
-        "vx": 0,
-        "va": 0,
-        "energy": 100,
-        "fuel": 500,
-        "parts": [[0, 0], [0, 0], [50, 0], [0, 0], [0, 0]],
-        "money": 500,
-        "buffs": []
-    }
+    "filetype": "image",
+    "filename": "kolymaga2_ship.png"
   }
 }
 
 ```
-### Описание полей ответа coords
+
+### Ответы Server -> Client
+
+**1. Ответ при заходе на сервер и обновление состояния:**
+
+```json
+{
+  "type": "Coords",
+  "data": {
+    "planets": [
+      {"image": "pluto.png", "x": 100, "y": 1e+2, "vx": 0.5, "vy": 1e-7, "r": 50},
+      {"image": "earth.png", "x": 300, "y": 1e+2, "vx": 0.05, "vy": 1e-3, "r": 80}
+    ],
+    "ships": [
+      {"image": "kolymaga2.png", "x": 0, "y": 0, "angle": 0, "vx": 0, "vy": 0, "w": 0}
+    ],
+    "self_index": 5
+  }
+}
+
+```
+
+**2. Ответ с запрошенным ресурсом (Resource):**
+
+```json
+{
+  "type": "Resource",
+  "data": {
+    "filename": "kolymaga2_ship.png",
+    "href": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA..."
+  }
+}
+
+```
+
+### Описание полей ответа Coords
 
 | Поле | Тип | Описание |
-| :--- | :--- | :--- |
-| `time` | `int` | Внутреннее время сервера |
-| `planets` | `object` | Объект планет в зоне |
-| `a`, `e`, `t` | `float` | Параметры эллиптической орбиты планеты: большая полуось (`a`), эксцентриситет (`e`), фаза (`t`) |
-| `mass`, `speed` | `float` | Масса планеты и скорость движения по орбите |
-| `planet_type` | `string` | Тип локации на планете (например, `shop`) |
-| `ships` | `array` | Список других кораблей в зоне (`ship_type`, координаты, скорости, `modules`) |
-| `x`, `y`, `angle` | `float` | Координаты корабля на карте и угол поворота корпуса |
-| `vx`, `vy`, `va` | `float` | Линейная скорость по осям X, Y и угловая скорость вращения (`va`) |
-| `self` | `object` | Состояние корабля самого игрока (`energy`, `fuel`, `parts`, `money`, `buffs`) |
+| --- | --- | --- |
+| `planets` | `array` | Массив планет в зоне |
+| `ships` | `array` | Список всех кораблей в зоне |
+| `image` | `string` | Название файла текстуры объекта (планеты или корабля) |
+| `x`, `y` | `float` | Координаты объекта на карте |
+| `vx`, `vy` | `float` | Вектор линейной скорости по осям X и Y |
+| `r` | `float` | Радиус планеты |
+| `angle` | `float` | Угол поворота корпуса корабля |
+| `w` | `float` | Угловая скорость вращения корабля |
+| `self_index` | `int` | Индекс корабля текущего игрока в массиве `ships` |
